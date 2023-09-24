@@ -18,14 +18,11 @@ In this project I used MySQL as a database. With the help of Hibernate and JPA w
 ->Book their slot
 
 #### :arrow_right: Admin
--> Update the slot [localhost:9090/slots/addSlot]
+-> Update the slot [localhost:9090/slots/addSlot](#)
 
 #### :arrow_right: Manager
--> Update the users role [localhost:9090/users]
-
-
-
-
+-> Update the users role [localhost:9090/users]()#
+************************************************************************************************
 
 # 💫 About Me:
 As a fresh and enthusiastic Java full stack development student.  Having a strong knowledge in OOPs, MySQL, and front end(Html, Css, Javascript) and having a good knowledge in Springboot framework. 
