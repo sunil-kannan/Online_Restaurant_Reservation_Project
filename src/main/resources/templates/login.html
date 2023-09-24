@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <!--BootStrap cdn-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--Font awesome-->
+    <script src="https://kit.fontawesome.com/843527e8f5.js" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container-fluid {}
+
+        .alert-info {
+            display: flex;
+            justify-content: center;
+        }
+
+        .login_box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(21, 49, 207);
+        }
+
+        .login {
+            background-color: aliceblue;
+            padding: 5px 10px;
+            width: 300px;
+            height: 330px;
+
+        }
+
+        .form-control:focus {
+            border: 1px solid rgba(0, 0, 255, 0.692);
+        }
+
+        .out-none,
+        .out-none:focus {
+            border-width: 0px;
+            outline: 0;
+            box-shadow: none;
+        }
+
+        .link-sign {
+            color: blue;
+        }
+
+        .link-sign:hover {
+            color: rgb(18, 109, 228);
+        }
+
+        .sign-in::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            display: block;
+            margin: auto;
+            background-color: blue;
+        }
+
+        #eye {
+            margin-top: 5px;
+        }
+
+        .alert {
+            padding: 7px 0;
+            margin: 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div th:replace="~{fragment/navigation  :: header}"></div>
+
+    <div class=" container-fluid login_box">
+        <div style="position: absolute;">
+            <div th:if="${param.registeredSuccessfully}" class="alert alert-info d-flex justify-content-center">
+                You've successfully registered! Please login
+            </div>
+            <div th:if="${param.error}" class="alert alert-danger d-flex justify-content-center">Invalid Email and Password.</div>
+
+            <div th:if="${param.logout}" class="alert alert-success d-flex justify-content-center ">You have been logged out.</div>
+            <br>
+
+            <div class="row login border">
+                <div class="col">
+                    <form method="post" th:action="@{/login}" class="form-horizontal" role="form">
+                        <div class="mb-5 sign-in text-center">
+                            <h3>LOGIN</h3>
+                        </div>
+
+                        <div class="input-group flex-nowrap mb-4 ">
+                            <span class="input-group-text" id="addon-wrapping"><i
+                                    class="fa-solid fa-envelope"></i></span>
+                            <input type="text" name="username" class="form-control" placeholder="Email"
+                                aria-label="Email">
+                        </div>
+
+                        <div class="input-group flex-nowrap ">
+                            <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-unlock"></i></span>
+                            <input type="password" id="password" name="password" class="form-control password-eye"
+                                placeholder="Password" aria-label="password">
+                            <span class="input-group-text out-none fas fa-eye-slash" id="eye"></span>
+                        </div><br>
+
+                        <div class="mt-2">
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </div>
+
+                        <div class="form-text mb-3 text-center">
+                            Don't have an account? <a th:href="@{/register}">SignUp Here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $("document").ready(function () {
+            $("#Login").addClass("active")
+            //Password eye
+            $("#eye").click(function () {
+                if ($(this).hasClass('fa-eye-slash')) {
+                    $(this).removeClass('fa-eye-slash');
+                    $(this).addClass('fa-eye');
+                    $('#password').attr('type', 'text');
+                } else {
+                    $(this).removeClass('fa-eye');
+                    $(this).addClass('fa-eye-slash');
+                    $('#password').attr('type', 'password');
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

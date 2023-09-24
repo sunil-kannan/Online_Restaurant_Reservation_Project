@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel OmCreem </title>
+    <!--BootStrap cdn-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!--Font awesome-->
+    <script src="https://kit.fontawesome.com/843527e8f5.js" crossorigin="anonymous"></script>
+    <!--Jquery Cdn-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: burlywood;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div th:replace="~{fragment/navigation  :: header}"></div>
+    <br><br><br>
+    <div  th:if="${not #lists.isEmpty(slotsallotted)}">
+    <div class="table-responsive-md your-slot container-fluid " role="alert">
+        <div class="col-10 col-md-6 alert alert-primary">
+            <table class="table  table-hover ">
+                <h5>Your Slots ->
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+                </h5>
+                
+                <thead>
+                    <tr class="table-active table-dark">
+                        <th scope="col">No of seats booked</th>
+                        <th scope="col">Slot Date</th>
+                        <th scope="col">Slot Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="slotsallot: ${slotsallotted}">
+                        <td th:text="${slotsallot.noOfSlot}"></td>
+                        <td th:text="${#temporals.format(slotsallot.slot.date, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${#temporals.format(slotsallot.slot.date, 'HH:mm')}"></td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <h4> Don't forget to have your lunch</h4>
+        </div>
+    </div>
+</div>
+    <div th:if="${param.SlotNotFound}">
+        <div class="alert alert-danger">Your slot was not booked. Please try again</div>
+    </div>
+
+    <div class="table-responsive-md row container-fluid">
+        <div class="col-12 col-md-10 offset-md-1">
+            <h2 class="d-flex justify-content-center">Availability of Slots</h2>
+            <table class="table table-striped table-hover  ">
+                <thead>
+                    <tr class="table-active">
+                        <th scope="col">Slot Date</th>
+                        <th scope="col">Slot Time</th>
+                        <th scope="col">Available Seat</th>
+                        <th scope="col"> Enter the number of seat</th>
+                        <th scope="col">Booking</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="slot: ${slot}">
+                        <!--if the slot is 0 then it will not be displayed in UI-->
+                        <div th:if="0 < ${slot.availableSlot} ">
+                            <form th:action="@{/slots/booking/{id}(id=${slot.id})}"
+                                onsubmit="return confirm('Do you really want to book your slot');">
+                                <td th:text="${#temporals.format(slot.date, 'dd/MM/yyyy')}"></td>
+                                <td th:text="${#temporals.format(slot.date, 'HH:mm')}"></td>
+                                <td th:text="${slot.availableSlot}"></td>
+                                <td><select name="number" id="cars">
+                                        <option value="1">1 slot</option>
+                                        <option value="2">2 slot</option>
+                                        <option value="3">3 slot</option>
+                                        <option value="4">4 slot</option>
+                                        <option value="5">5 slot</option>
+                                        <option value="6">6 slot</option>
+                                    </select></td>
+                                <td><button type="submit" class="btn btn-info ">Book your slot</button></td>
+                            </form>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+        function booking(date, time, id) {
+            var id = id;
+            document.getElementById("myForm").action = "@{/slots/booking/`${id}`}";
+            $(".date").text(date);
+            $(".time").text(time);
+            console.log(id);
+        }
+
+        /*]]>*/
+
+    </script>
+</body>
+
+</html>
