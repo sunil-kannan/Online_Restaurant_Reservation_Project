@@ -6,8 +6,7 @@ Simple Online table reservation and management system using Spring boot, Java, M
 ### Logging and Security
 -> We all know that logging and security is the most important part of the web development.  
 -> In this project I included role based authentication, so that admin and manager can maintain the management system.  
--> Every person(user) who is signing up will be allocated as Role_USER and manager can only have the authority to update the Role_USER to Role_ADMIN. Basically the manager comes under Role_MANAGER. There are some features which the manager and the admin can have the authority to access that end point. 
-
+-> Every person(user) who is signing up will be allocated as Role_USER and manager can only have the authority to update the Role_USER to Role_ADMIN. Basically the manager comes under Role_MANAGER. There are some features which the manager and the admin can have the authority to access that end point. \
 -> Passwords are stored in encrypted format so that we can prevent the password from the outsider.
 
 ### Database - MySQL
