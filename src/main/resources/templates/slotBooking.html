@@ -11,8 +11,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <!--Font awesome-->
-    <script src="https://kit.fontawesome.com/843527e8f5.js" crossorigin="anonymous"></script>
     <!--Jquery Cdn-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <style>
@@ -27,34 +25,35 @@
 
     <div th:replace="~{fragment/navigation  :: header}"></div>
     <br><br><br>
-    <div  th:if="${not #lists.isEmpty(slotsallotted)}">
-    <div class="table-responsive-md your-slot container-fluid " role="alert">
-        <div class="col-10 col-md-6 alert alert-primary">
-            <table class="table  table-hover ">
-                <h5>Your Slots ->
-                    <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
-                </h5>
-                
-                <thead>
-                    <tr class="table-active table-dark">
-                        <th scope="col">No of seats booked</th>
-                        <th scope="col">Slot Date</th>
-                        <th scope="col">Slot Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="slotsallot: ${slotsallotted}">
-                        <td th:text="${slotsallot.noOfSlot}"></td>
-                        <td th:text="${#temporals.format(slotsallot.slot.date, 'dd/MM/yyyy')}"></td>
-                        <td th:text="${#temporals.format(slotsallot.slot.date, 'HH:mm')}"></td>
-                    </tr>
-                </tbody>
+    <div th:if="${not #lists.isEmpty(slotsallotted)}">
+        <div class="table-responsive-md your-slot container-fluid " role="alert">
+            <div class="col-10 col-md-6 alert alert-primary">
+                <table class="table  table-hover ">
+                    <h5>Your Slots ->
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="alert"
+                            aria-label="Close"></button>
+                    </h5>
 
-            </table>
-            <h4> Don't forget to have your lunch</h4>
+                    <thead>
+                        <tr class="table-active table-dark">
+                            <th scope="col">No of seats booked</th>
+                            <th scope="col">Slot Date</th>
+                            <th scope="col">Slot Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="slotsallot: ${slotsallotted}">
+                            <td th:text="${slotsallot.noOfSlot}"></td>
+                            <td th:text="${#temporals.format(slotsallot.slot.date, 'dd/MM/yyyy')}"></td>
+                            <td th:text="${#temporals.format(slotsallot.slot.date, 'HH:mm')}"></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <h4> Don't forget to have your lunch</h4>
+            </div>
         </div>
     </div>
-</div>
     <div th:if="${param.SlotNotFound}">
         <div class="alert alert-danger">Your slot was not booked. Please try again</div>
     </div>
@@ -98,8 +97,6 @@
         </div>
     </div>
 
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script th:inline="javascript">
 
@@ -113,7 +110,6 @@
         }
 
         /*]]>*/
-
     </script>
 </body>
 
