@@ -12,9 +12,9 @@ Simple Online table reservation and management system using Spring boot, Java, M
 ### Database - MySQL
 In this project I used MySQL as a database. With the help of Hibernate and JPA we can easily map all the objects in to the entities, because hibernate is ORM (Object Relational Mapping) tool so that we can easily store all the objects into the database. We just have to annotate some dependency and JPA will take care of the things.
 
-### Roles
+### Roles and what can they do 
 #### :arrow_right: User
--> Register and Login
+-> Register and Login \
 ->Book their slot
 
 #### :arrow_right: Admin
