@@ -1,9 +1,9 @@
 # Online_Restaurant_Reservation_Project
 Simple Online table reservation and management system using Spring boot, Java, MySQL and Thyme leaf (Html, CSS, JavaScript, Jquery and Bootstrap). User can login and book their tables.    
   
-##Features
+## Features
 
-###Logging and Security
+### Logging and Security
 We all know that logging and security is the most important part of the web development.  In this project I included role based authentication, so that admin and manager can maintain the management system.  New user can register and Login, but coming to admin, the manager can only have the rights to create accound for admin and then he will share the username and password so that admin can login by using that username and password. Passwords are stored in encrypted format so that we can prevent the password from the outsider.
 
 ###Database - MySQL
