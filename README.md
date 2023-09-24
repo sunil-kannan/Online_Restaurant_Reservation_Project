@@ -21,7 +21,7 @@ In this project I used MySQL as a database. With the help of Hibernate and JPA w
 -> Update the slot [localhost:9090/slots/addSlot](#)
 
 #### :arrow_right: Manager
--> Update the users role [localhost:9090/users]()#
+-> Update the users role [localhost:9090/users](#)
 ************************************************************************************************
 
 # 💫 About Me:
