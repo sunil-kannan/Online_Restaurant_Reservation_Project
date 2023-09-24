@@ -4,10 +4,21 @@ Simple Online table reservation and management system using Spring boot, Java, M
 ## Features
 
 ### Logging and Security
-We all know that logging and security is the most important part of the web development.  In this project I included role based authentication, so that admin and manager can maintain the management system.  New user can register and Login, but coming to admin, the manager can only have the rights to create accound for admin and then he will share the username and password so that admin can login by using that username and password. Passwords are stored in encrypted format so that we can prevent the password from the outsider.
+We all know that logging and security is the most important part of the web development.  In this project I included role based authentication, so that admin and manager can maintain the management system.  New user can register and Login, but coming to admin, the manager can only have the authority to update the normal users role as a admin role.  so that admin can login and avail some features. Passwords are stored in encrypted format so that we can prevent the password from the outsider.
 
-###Database - MySQL
+### Database - MySQL
 In this project I used MySQL as a database. With the help of Hibernate and JPA we can easily map all the objects in to the entities, because hibernate is ORM (Object Relational Mapping) tool so that we can easily store all the objects into the database. We just have to annotate some dependency and JPA will take care of the things.
+
+### Roles
+#### ->User
+:arrow_right: Register and Login
+:arrow_right: Book their slot
+
+#### ->Admin
+:arrow_right: Update the slot
+
+#### ->Manager
+:arrow_right: Update the users role 
 
 
 
