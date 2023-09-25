@@ -2,8 +2,6 @@ package com.example.project1.entities;
 
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.*;
