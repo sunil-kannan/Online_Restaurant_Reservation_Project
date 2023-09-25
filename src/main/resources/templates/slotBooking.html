@@ -95,7 +95,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script th:inline="javascript">
-
+        $("document").ready(function () {
+            $("#book_your_slot").addClass("active")
+        })
         /*<![CDATA[*/
         function booking(date, time, id) {
             var id = id;
