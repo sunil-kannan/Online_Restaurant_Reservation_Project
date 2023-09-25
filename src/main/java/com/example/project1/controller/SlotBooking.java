@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import com.example.project1.entities.Slot;
 import com.example.project1.entities.SlotBooked;
@@ -34,10 +35,8 @@ public class SlotBooking {
         String LoginUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         List<SlotBooked> slotsallotted = slotServices.detailsOfSlotBooked(LoginUserName);
         model.addAttribute("slotsallotted", slotsallotted);
-        System.out.println(slotsallotted);
         List<Slot> slot = slotServices.findAllSlot();
-
-     
+        
         model.addAttribute("slot", slot);
         return "slotBooking";
     }

@@ -25,11 +25,9 @@ public class HomepageController {
     public String homepage(Model model) {
         String LoginUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-              System.out.println("Not"+authentication);
 
         if (authentication.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"))) {
               model.addAttribute("userRole", "ROLE_ADMIN");
-              System.out.println(authentication);
         }
 
         String anonymousUser = "anonymousUser";

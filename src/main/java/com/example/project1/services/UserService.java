@@ -19,8 +19,6 @@ public interface UserService {
 
    List<User> findAllUsers();
 
-   //List<User> searchUserDetails(String keyword);
-
    User getUserById(Long id);
 
    List<User> findUserWithSorting(String field);
