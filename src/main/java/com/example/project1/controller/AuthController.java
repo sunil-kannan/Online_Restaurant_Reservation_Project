@@ -44,8 +44,12 @@ public class AuthController {
                                BindingResult result,
                                Model model){
         User existing = userService.findByEmail(user.getEmail());
+        
         if (existing != null) {
             result.rejectValue("email", null, "There is already an account registered with that email");
+        }
+        if(!user.getPassword().equals(user.getConfirmPassword())){
+            result.rejectValue("confirmPassword", null, "Password doesn't match with Confirm Password");
         }
         if (result.hasErrors()) {
             model.addAttribute("user", user);
@@ -54,6 +58,5 @@ public class AuthController {
         userService.saveUser(user);
         return "redirect:/login?registeredSuccessfully";
     }
-
 
 }

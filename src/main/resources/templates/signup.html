@@ -164,33 +164,36 @@
 
 
         $("form").on("submit", function (e) {
-
             var psdLength = $(".password-check").val();
             var confirmpassword = $(".password-confirm-check").val();
             var splchar = /[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]/g;
             if (psdLength.length < 8) {
                 alert("Password must be atleast 8 characters")
+                e.preventDefault();
             }
             else if (psdLength.length > 15) {
                 alert("Password must be below 16 characters")
+                e.preventDefault();
             }
             else if (psdLength.search(/[A-Z]/) < 0) {
                 alert("Password must contain at least one Uppercase letter")
+                e.preventDefault();
             }
             else if (psdLength.search(/[a-z]/) < 0) {
                 alert("Password must contain at least one Lowercase letter")
+                e.preventDefault();
             }
             else if (psdLength.search(/[0-9]/) < 0) {
                 alert("Password must contain atleast one number")
+                e.preventDefault();
             }
             else if (psdLength.search(splchar) < 0) {
                 alert("Password must contain atleast one special character")
+                e.preventDefault();
             }
             else if (psdLength != confirmpassword) {
                 alert("Confirm password doesn't match your password. Please enter it correctly")
-            }
-            else {
-                e.submit()
+              
             }
         });
 

@@ -1,6 +1,6 @@
 package com.example.project1.dto;
 
-import com.example.project1.validation.Mobile;
+import com.example.project1.validation.*;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @Getter
 @Setter
