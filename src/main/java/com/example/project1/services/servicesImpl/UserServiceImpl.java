@@ -12,8 +12,6 @@ import com.example.project1.entities.*;
 import com.example.project1.repository.*;
 import com.example.project1.services.UserService;
 
-
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -28,7 +26,7 @@ public class UserServiceImpl implements UserService {
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
+    
     @Override
     public void saveUser(UserDto userDto) {
         User user = new User();
@@ -67,7 +65,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.getUserById(id);
     }
   
-
     @Override
     public void saveUserforRole(User user) {
         this.userRepository.save(user);
@@ -75,28 +72,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Role> getAllRole() {
-        return roleRepository.findAll(Sort.by("id"));
-       
+        return roleRepository.findAll(Sort.by("id"));     
     }
-
-
 
     @Override
     public List<User> findUserWithSorting(String field){
         return this.userRepository.findAll(Sort.by(Sort.Direction.ASC, field));
-    }
-
-  
+    }  
 
     @Override
     public Page<User> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection, String keyword) {
       Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
             Sort.by(sortField).descending();
-
             PageRequest pageable = PageRequest.of(pageNo, pageSize, sort);
-            
         return this.userRepository.searchUserDetails(keyword, pageable);
     }
-
 }
 
