@@ -29,12 +29,10 @@ public class SlotBooking {
     // method will show the slot booking page
     @GetMapping("/")
     public String page(Authentication authentication, Model model) {
-
         String LoginUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         List<SlotBooked> slotsallotted = slotServices.detailsOfSlotBooked(LoginUserName);
         model.addAttribute("slotsallotted", slotsallotted);
         List<Slot> slot = slotServices.findAllSlot();
-        
         model.addAttribute("slot", slot);
         return "slotBooking";
     }
@@ -43,7 +41,7 @@ public class SlotBooking {
     @GetMapping("/booking/{id}")
     public String BookYourSlot(Authentication authentication, @PathVariable Long id,
             @RequestParam("number") Integer number, Model model) {
-
+                
         String LoginUserName = SecurityContextHolder.getContext().getAuthentication().getName();
         Slot slot = slotServices.findById(id);
 
