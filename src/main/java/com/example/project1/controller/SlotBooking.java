@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import com.example.project1.entities.Slot;
 import com.example.project1.entities.SlotBooked;
@@ -51,12 +49,7 @@ public class SlotBooking {
 
         if (slot != null && slot.getAvailableSlot() >= number) {
             slot.setAvailableSlot(slot.getAvailableSlot() - number);
-            try {
                 slotServices.saveSlot(slot);
-            } catch (ParseException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
             SlotBooked slotBooked = new SlotBooked();
             slotBooked.setCustomerEmail(LoginUserName);
             slotBooked.setNoOfSlot(number);
@@ -83,12 +76,7 @@ public class SlotBooking {
     @PostMapping("/addSlot/save")
     public String addSlots(@ModelAttribute("slot") Slot slot) {
         System.out.println("Sunil" +slot);
-        try {
             slotServices.saveSlot(slot);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
         return "redirect:/slots/addSlot?successfullyAdded";
     }
 

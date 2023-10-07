@@ -40,7 +40,7 @@ public class SlotServices {
         return slotRepository.getSlotById(id);
     }
 
-    public Slot saveSlot(Slot slot) throws ParseException {
+    public Slot saveSlot(Slot slot){
         return slotRepository.save(slot);
     }
 
